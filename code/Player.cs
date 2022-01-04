@@ -1,63 +1,90 @@
+using System;
+using System.Reflection;
 //Player.cs
 using Sandbox;
-
-
- namespace bomber{
-        
+       
         /*public int getMax(){
-            return maxbombs;
+            return MaxBombs;
         }
 
         public int getLiv(){
-            return livbombs;
+            return LivBombs;
         }
 
         public void setMax(int foo, bool bar){
             if(bar==true)
-                maxbombs -= foo;
+                MaxBombs -= foo;
             else
-                maxbombs += foo;
+                MaxBombs += foo;
         }
 
         public void setLiv(int foo, bool bar){
             if(bar==true)
-                livbombs -= foo;
+                LivBombs -= foo;
             else
-                livbombs += foo;
+                LivBombs += foo;
         }*/
+    
+   
+    partial class Bomber : Player
+    {
+        public int MaxBombs = 1;
+        public int LivBombs = 0;
+
+        public object[] bombarry;
+
+        public tbomb e;
+            public override void Respawn(){
+                SetModel("models/citizen/citizen.vmdl");
+
+                Controller = new Pcontroller();
+
+                Animator = new StandardPlayerAnimator();
+
+                Camera = new td_cam();
+
+                EnableAllCollisions = true;
+                EnableDrawing = true;
+                EnableHideInFirstPerson = true;
+                EnableShadowInFirstPerson = true;              
+
+                MaxBombs = 1;
+                LivBombs = 0;            
+                
+                
+
+                base.Respawn();
+            }//end of respawn override  
+
+            public override void Simulate( Client cl ){
+                if ( Input.Pressed (InputButton.Jump)){
+                    if(LivBombs<MaxBombs){
+			        //bombarry[0] = 
+                    e = new tbomb();
+                    LivBombs++;
+                    }
+		        }
+                else if( Input.Pressed (InputButton.Attack1)){
+                    if(e!=null){
+                    //tbomb e = (tbomb)bombarry[0];
+                        LivBombs--;
+                        e.explode();
+                        e.Delete();
+                   // bombarry[0]=null;
+                    }
+                }
+                else if(Input.Pressed (InputButton.Attack2)){
+                    //MaxBombs++;
+                }
+                else
+                base.Simulate( cl );
+            }
+
+
     }
 
-partial class Bomber : Player
-{
-   
-    
-        
-        public override void Respawn(){
-            SetModel("models/citizen/citizen.vmdl");
-
-            Controller = new Pcontroller();
-
-            Animator = new StandardPlayerAnimator();
-
-            Camera = new td_cam();
-
-            EnableAllCollisions = true;
-            EnableDrawing = true;
-            EnableHideInFirstPerson = true;
-            EnableShadowInFirstPerson = true;
-            
-            int maxbombs = 1;
-            int livbombs = 0;
-
-
-            base.Respawn();
-        }//end of respawn override
-
-        
-
-}//end of player partial
-
 //game.cs
+
 public partial class TerryBomb : Sandbox.Game
 {
     public override void ClientJoined( Client client)
