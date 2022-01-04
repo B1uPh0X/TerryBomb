@@ -31,7 +31,7 @@ using Sandbox;
         public int MaxBombs = 1;
         public int LivBombs = 0;
 
-        public object[] bombarry;
+        //public object[] bombarry;
 
         public tbomb e;
             public override void Respawn(){
@@ -69,7 +69,7 @@ using Sandbox;
                     //tbomb e = (tbomb)bombarry[0];
                         LivBombs--;
                         e.explode();
-                        e.Delete();
+                        //e.Delete();
                    // bombarry[0]=null;
                     }
                 }
