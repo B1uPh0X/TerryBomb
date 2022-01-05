@@ -1,3 +1,4 @@
+using System;
 using Sandbox;
 	public class td_cam : Camera
 	{
@@ -35,12 +36,16 @@ using Sandbox;
 		}
 
 		public override void Update()
-		{
-			FieldOfView = 70;
-			Position = TargetPos;
-			Rotation = TargetRot;
-			Viewer = null;
-
+		{	
+			var player = Local.Client?.Pawn;
+			if(player != null){
+				FieldOfView = 70;
+				TargetPos = player.Position;
+				TargetPos.z = 1024;
+				Position = TargetPos;
+				Rotation = TargetRot;
+				Viewer = null;
+			}
 			/*
 			//TargetPos.x = player.Position.x;
 			//TargetPos.y = player.Position.y;

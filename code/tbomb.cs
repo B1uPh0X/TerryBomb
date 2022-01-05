@@ -11,7 +11,7 @@ public class tbomb : ModelEntity
             Owner = player.Owner;
             Position = player.Position;
             EnableAllCollisions = true;
-            SetModel("models/citizen_props/crate01.vmdl");          
+            SetModel("models/citizen_props/roadcone01.vmdl");          
             //increament LivBombs
         }
     }  

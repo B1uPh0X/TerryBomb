@@ -37,11 +37,12 @@ using Sandbox;
             public override void Respawn(){
                 SetModel("models/citizen/citizen.vmdl");
 
-                Controller = new Pcontroller();
+                Controller = new Pcontroller();//revert back to defualt if nothing happens pcontroller
 
                 Animator = new StandardPlayerAnimator();
 
                 Camera = new td_cam();
+                //make it so the player rotates according to movement inputs, not mouse
 
                 EnableAllCollisions = true;
                 EnableDrawing = true;
@@ -69,7 +70,7 @@ using Sandbox;
                     //tbomb e = (tbomb)bombarry[0];
                         LivBombs--;
                         e.explode();
-                        //e.Delete();
+                        e.Delete();
                    // bombarry[0]=null;
                     }
                 }
@@ -95,5 +96,11 @@ public partial class TerryBomb : Sandbox.Game
         client.Pawn = player;
 
         player.Respawn();
+
+        //move this out of client joined before multiplayer test
+        //where? idk
+        var grid = new Grid();
+		grid.InitGrid();
+		grid.generate();
     }
 }
