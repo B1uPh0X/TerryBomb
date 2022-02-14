@@ -17,7 +17,6 @@ using Sandbox;
 				Rotation = player.Rotation;
 				TargetRot = Rotation;
 				TargetRot.y = .71F;
-
 			}
 
 				/*
