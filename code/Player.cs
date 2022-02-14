@@ -31,10 +31,11 @@ using Sandbox;
         public int MaxBombs = 1;
         public int LivBombs = 0;
 
-        //public object[] bombarry;
+        //public tbomb[] bombarry;
 
         public tbomb e;
-            public override void Respawn(){
+            public override void Respawn()
+            {
                 SetModel("models/citizen/citizen.vmdl");
 
                 Controller = new Pcontroller();//revert back to defualt if nothing happens pcontroller
@@ -52,12 +53,11 @@ using Sandbox;
                 MaxBombs = 1;
                 LivBombs = 0;            
                 
-                
-
                 base.Respawn();
             }//end of respawn override  
 
-            public override void Simulate( Client cl ){
+            public override void Simulate( Client cl )
+            {
                 if ( Input.Pressed (InputButton.Jump)){
                     if(LivBombs<MaxBombs){
 			        //bombarry[0] = 
@@ -65,6 +65,7 @@ using Sandbox;
                     LivBombs++;
                     }
 		        }
+                
                 else if( Input.Pressed (InputButton.Attack1)){
                     if(e!=null){
                     //tbomb e = (tbomb)bombarry[0];
@@ -99,8 +100,6 @@ public partial class TerryBomb : Sandbox.Game
 
         //move this out of client joined before multiplayer test
         //where? idk
-        var grid = new Grid();
-		grid.InitGrid();
-		grid.generate();
+        
     }
 }

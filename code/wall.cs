@@ -4,7 +4,10 @@ public class wall : ModelEntity{
 
 	public override void Spawn(){
 		base.Spawn();
-        SetModel("models/citizen_props/crate01.vmdl");
+        EnableAllCollisions = true;
+        EnableTouch = true;
+        SetModel("models/citizen/citizen.vmdl");
+        Scale = 1.8f;
 	}
 
     public void SetPosition(Vector3 pos){

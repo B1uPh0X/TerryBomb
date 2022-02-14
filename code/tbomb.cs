@@ -4,7 +4,8 @@ using Sandbox;
 
 public class tbomb : ModelEntity
 {
-        public override void Spawn(){       
+        public override void Spawn()
+        {       
         base.Spawn();
         var player = Local.Client?.Pawn;
         if( player != null ){
@@ -16,8 +17,10 @@ public class tbomb : ModelEntity
         }
     }  
 
-    public void explode(){
+    public void explode()
+    {
         // Effects
+        
 		Sound.FromWorld("rust_pumpshotgun.shootdouble", Position);
         Particles.Create("particles/explosion/barrel_explosion/explosion_barrel.vpcf", Position);
         //do stuff to stuff in radius
@@ -37,6 +40,8 @@ public class tbomb : ModelEntity
             var dist = Vector3.DistanceBetween(Position , targetPos);
             if( dist > Radius )
                 continue;
+
+            
             //TODO integrate this stuff into the grid, might make shit easier
            /* var tr = Trace.Ray( Position, targetPos )
                 .WorldOnly()
